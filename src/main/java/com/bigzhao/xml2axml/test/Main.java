@@ -5,10 +5,7 @@ import com.bigzhao.xml2axml.Encoder;
 import org.apache.commons.io.FileUtils;
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 
 /**
  * Created by Roy on 15-10-6.
@@ -32,8 +29,8 @@ public class Main {
         FileUtils.writeByteArrayToFile(new File(out), bs);
     }
 
-    public static void decode(String in,String out) throws FileNotFoundException {
-        AXMLPrinter.out=new PrintStream(new File(out));
+    public static void decode(String in,String out) throws FileNotFoundException, UnsupportedEncodingException {
+        AXMLPrinter.out=new PrintStream(new File(out),"UTF-8");
         AXMLPrinter.main(new String[]{in});
         AXMLPrinter.out.close();
     }
